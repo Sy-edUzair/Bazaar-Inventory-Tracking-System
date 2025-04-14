@@ -44,7 +44,7 @@ class InventoryViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
 
 
-class StockMovementViewSet(viewsets.ModelViewSet):
+class StockMovementViewSet(viewsets.ModelViewSet): #These can be automated in background in V3 using Kafka or Celery
     queryset = StockMovement.objects.all().order_by('-timestamp')
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['store', 'product', 'movement_type', 'timestamp']
